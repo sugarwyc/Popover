@@ -15,7 +15,7 @@ public enum PopoverOption {
   case CornerRadius(CGFloat)
   case SideEdge(CGFloat)
   case BlackOverlayColor(UIColor)
-  case OverlayBlur(UIBlurEffectStyle)
+//  case OverlayBlur(UIBlurEffectStyle)
   case Type(Popover.PopoverType)
   case Color(UIColor)
 }
@@ -35,7 +35,7 @@ public class Popover: UIView {
   private var sideEdge: CGFloat = 20.0
   private var popoverType: PopoverType = .Down
   private var blackOverlayColor: UIColor = UIColor(white: 0.0, alpha: 0.2)
-  private var overlayBlur: UIBlurEffect?
+//  private var overlayBlur: UIBlurEffect?
   private var popoverColor: UIColor = UIColor.whiteColor()
 
   // custom closure
@@ -90,8 +90,8 @@ public class Popover: UIView {
           self.sideEdge = value
         case let .BlackOverlayColor(value):
           self.blackOverlayColor = value
-        case let .OverlayBlur(style):
-          self.overlayBlur = UIBlurEffect(style: style)
+//        case let .OverlayBlur(style):
+//          self.overlayBlur = UIBlurEffect(style: style)
         case let .Type(value):
           self.popoverType = value
         case let .Color(value):
@@ -173,15 +173,15 @@ public class Popover: UIView {
     self.blackOverlay.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
     self.blackOverlay.frame = inView.bounds
 
-    if let overlayBlur = self.overlayBlur {
-      let effectView = UIVisualEffectView(effect: overlayBlur)
-      effectView.frame = self.blackOverlay.bounds
-      effectView.userInteractionEnabled = false
-      self.blackOverlay.addSubview(effectView)
-    } else {
+//    if let overlayBlur = self.overlayBlur {
+//      let effectView = UIVisualEffectView(effect: overlayBlur)
+//      effectView.frame = self.blackOverlay.bounds
+//      effectView.userInteractionEnabled = false
+//      self.blackOverlay.addSubview(effectView)
+//    } else {
       self.blackOverlay.backgroundColor = self.blackOverlayColor
       self.blackOverlay.alpha = 0
-    }
+//    }
 
     inView.addSubview(self.blackOverlay)
     self.blackOverlay.addTarget(self, action: "dismiss", forControlEvents: .TouchUpInside)
